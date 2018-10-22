@@ -1,3 +1,3 @@
 import React from "react"
 
-export default () => <div>Hello world!</div>
+export default () => <div>Shane Porter is a JavaScript consultant based in Wiltshire, UK.</div>

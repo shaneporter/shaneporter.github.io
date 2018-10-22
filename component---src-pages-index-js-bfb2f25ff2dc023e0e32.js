@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[1],{131:function(n,e,t){"use strict";t.r(e);var a=t(0),i=t.n(a);e.default=function(){return i.a.createElement("div",null,"Shane Porter is a JavaScript consultant based in Wiltshire, UK.")}}}]);
+//# sourceMappingURL=component---src-pages-index-js-bfb2f25ff2dc023e0e32.js.map

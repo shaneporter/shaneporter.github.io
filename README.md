@@ -1,0 +1,1 @@
+Personal Website for Shane Porter. At the moment, a skeletal Next.js project with some additions for formatting and linting.

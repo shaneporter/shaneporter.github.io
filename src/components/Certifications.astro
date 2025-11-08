@@ -1,0 +1,54 @@
+---
+const certifications = [
+  {
+    name: 'Professional Cloud Developer',
+    issuer: 'Google Cloud',
+    date: 'Nov 2025',
+    expires: 'Nov 2027',
+    credlyUrl: 'https://www.credly.com/badges/4580b057-1f9b-45b9-9170-731915721b38',
+    logo: 'Google__G__logo'
+  }
+];
+---
+
+<section class="mb-20 fade-in fade-in-delay-3">
+  <h2 class="text-4xl mb-12 font-light text-zinc-900 dark:text-zinc-100 section-heading">
+    Certifications
+  </h2>
+  <div class="space-y-6">
+    {certifications.map(cert => (
+      <a 
+        href={cert.credlyUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex items-center gap-6 group"
+      >
+        <div class="w-12 h-12 flex-shrink-0 flex items-center justify-center">
+          <img 
+            src={`/certifications/${cert.logo}.svg`}
+            alt={`${cert.issuer} logo`}
+            class="w-12 h-12 object-contain cert-logo"
+            loading="lazy"
+          />
+        </div>
+        <div class="flex-1">
+          <h3 class="text-xl font-normal text-zinc-900 dark:text-zinc-100 group-hover:text-portfolio-red dark:group-hover:text-red-400 transition-colors">
+            {cert.name}
+          </h3>
+          <p class="text-sm text-zinc-600 dark:text-zinc-400 mt-1">
+            {cert.issuer} · Issued {cert.date} · Expires {cert.expires}
+          </p>
+        </div>
+        <svg class="w-5 h-5 text-zinc-400 dark:text-zinc-600 group-hover:text-portfolio-red dark:group-hover:text-red-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+        </svg>
+      </a>
+    ))}
+  </div>
+</section>
+
+<style>
+  .cert-logo {
+    filter: brightness(0) invert(1);
+  }
+</style>

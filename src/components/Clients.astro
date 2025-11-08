@@ -1,0 +1,50 @@
+---
+const clients = [
+  { name: 'AT&T', slug: 'att-logo' },
+  { name: 'Bupa', slug: 'bupa', scale: 1.15 },
+  { name: 'Dyson', slug: 'dyson' },
+  { name: 'Hostelworld', slug: 'hostelworld' },
+  { name: 'Mentor Graphics', slug: 'mentorgraphics' },
+  { name: 'Puma', slug: 'puma', scale: 0.95 },
+  { name: 'Nationwide', slug: 'nationwide' },
+  { name: 'NHS', slug: 'nhs' },
+  { name: 'Office for National Statistics', slug: 'ons' },
+  { name: 'National Rail', slug: 'nationalrail' },
+  { name: 'Qlik', slug: 'qlik', scale: 0.8 },
+  { name: 'Thales', slug: 'thales' },
+];
+---
+
+<section class="mb-20 fade-in fade-in-delay-3" aria-labelledby="clients-heading">
+  <h2 id="clients-heading" class="text-4xl mb-12 font-light text-zinc-900 dark:text-zinc-100 section-heading">
+    Selected Clients & Partners
+  </h2>
+  <p class="sr-only">Logos of companies I've worked with as a consultant or contractor</p>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-6" role="list">
+    {clients.slice(0, 12).map(client => (
+      <div class="flex items-center justify-center p-4" role="listitem">
+        <img 
+          src={`/clients/${client.slug}.svg`}
+          alt={`${client.name} logo`}
+          class="max-h-12 w-auto object-contain client-logo"
+          style={client.scale ? `transform: scale(${client.scale * 0.85})` : 'transform: scale(0.85)'}
+          loading="lazy"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
+        />
+        <span class="hidden text-sm text-center text-zinc-700 dark:text-zinc-300">
+          {client.name}
+        </span>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .client-logo {
+    filter: brightness(0) invert(1);
+  }
+  
+  img[style*="display: none"] + span {
+    display: flex !important;
+  }
+</style>

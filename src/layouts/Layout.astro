@@ -1,10 +1,23 @@
 ---
+import '../styles/global.css';
+
 interface Props {
 	title: string;
 	description?: string;
+	keywords?: string;
+	ogImage?: string;
+	ogType?: string;
 }
 
-const { title, description = 'Shane Porter - JavaScript Developer' } = Astro.props;
+const { 
+	title, 
+	description = 'Principal Engineer specialising in Google Cloud Platform, full-stack JavaScript development, and AI-powered solutions. 20+ years of experience building enterprise applications.',
+	keywords = 'JavaScript Developer, Google Cloud Platform, GCP, Principal Engineer, Full Stack Developer, TypeScript, React, Node.js, Cloud Architecture, AI Platform, Vertex AI, NestJS, Next.js, React Native, Wiltshire Developer, Remote Developer UK',
+	ogImage = '/favicon.svg',
+	ogType = 'website'
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
@@ -12,12 +25,72 @@ const { title, description = 'Shane Porter - JavaScript Developer' } = Astro.pro
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content={description} />
+		<meta name="keywords" content={keywords} />
 		<meta name="viewport" content="width=device-width" />
+		<meta name="author" content="Shane Porter" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+		<link rel="manifest" href="/site.webmanifest" />
+		<meta name="theme-color" content="#b01830" />
+		<link rel="canonical" href={canonicalURL} />
 		<meta name="generator" content={Astro.generator} />
+		
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content={ogType} />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={new URL(ogImage, Astro.site)} />
+		<meta property="og:site_name" content="Shane Porter" />
+		
+		<!-- Twitter -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:url" content={canonicalURL} />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={new URL(ogImage, Astro.site)} />
+		
+		<!-- Additional SEO -->
+		<meta name="robots" content="index, follow" />
+		<meta name="googlebot" content="index, follow" />
+		
 		<title>{title}</title>
+		
+		<!-- Schema.org JSON-LD -->
+		<script type="application/ld+json" set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "Person",
+			"name": "Shane Porter",
+			"jobTitle": "Principal Engineer",
+			"description": description,
+			"url": canonicalURL.toString(),
+			"sameAs": [
+				"https://github.com/shaneporter",
+				"https://linkedin.com/in/shane-porter"
+			],
+			"knowsAbout": [
+				"JavaScript",
+				"TypeScript",
+				"Google Cloud Platform",
+				"React",
+				"Node.js",
+				"Cloud Architecture",
+				"AI/ML",
+				"Full Stack Development"
+			],
+			"workLocation": {
+				"@type": "Place",
+				"address": {
+					"@type": "PostalAddress",
+					"addressLocality": "Wiltshire",
+					"addressCountry": "UK"
+				}
+			}
+		})} />
 	</head>
-	<body class="min-h-screen bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100">
+	<body class="bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 font-serif antialiased">
 		<slot />
 	</body>
 </html>

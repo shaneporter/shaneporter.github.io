@@ -1,0 +1,136 @@
+---
+const formspreeId = 'xnnlavep';
+---
+
+<section class="mb-8 fade-in fade-in-delay-3">
+  <h2 class="text-4xl mb-8 font-light text-zinc-900 dark:text-zinc-100 section-heading">
+    Get in Touch
+  </h2>
+  
+  <div class="space-y-6">
+    <p class="text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed mb-6">
+      I'm currently employed but always happy to have a conversation about interesting opportunities, 
+      collaborations, or connecting with fellow developers. I typically respond within 24 hours.
+    </p>
+    
+    <button
+      id="open-contact-dialog"
+      class="px-8 py-3 bg-portfolio-red dark:bg-red-400 text-white dark:text-zinc-900 hover:bg-red-700 dark:hover:bg-red-300 transition-colors duration-200 font-medium"
+    >
+      Send Message
+    </button>
+  </div>
+</section>
+
+<!-- Contact Dialog -->
+<dialog id="contact-dialog" class="backdrop:bg-black backdrop:bg-opacity-50 max-w-2xl w-full p-0 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
+  <div class="p-8">
+    <div class="flex justify-between items-start mb-6">
+      <h2 class="text-3xl font-light text-zinc-900 dark:text-zinc-100">
+        Send a Message
+      </h2>
+      <button
+        id="close-contact-dialog"
+        class="text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+        aria-label="Close dialog"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+
+    <form action={`https://formspree.io/f/${formspreeId}`} method="POST" class="space-y-6">
+      <!-- Honeypot field for spam protection -->
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+      
+      <div>
+        <label for="name" class="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-2">
+          Name
+        </label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          required
+          class="w-full px-4 py-3 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-900 dark:text-zinc-100 focus:outline-none focus:border-portfolio-red dark:focus:border-red-400 transition-colors"
+        >
+      </div>
+
+      <div>
+        <label for="email" class="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-2">
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          class="w-full px-4 py-3 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-900 dark:text-zinc-100 focus:outline-none focus:border-portfolio-red dark:focus:border-red-400 transition-colors"
+        >
+      </div>
+
+      <div>
+        <label for="message" class="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-2">
+          Message
+        </label>
+        <textarea
+          id="message"
+          name="message"
+          rows="6"
+          required
+          class="w-full px-4 py-3 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-900 dark:text-zinc-100 focus:outline-none focus:border-portfolio-red dark:focus:border-red-400 transition-colors resize-y"
+        ></textarea>
+      </div>
+
+      <div class="flex gap-4">
+        <button
+          type="submit"
+          class="px-8 py-3 bg-portfolio-red dark:bg-red-400 text-white dark:text-zinc-900 hover:bg-red-700 dark:hover:bg-red-300 transition-colors duration-200 font-medium"
+        >
+          Send Message
+        </button>
+        <button
+          type="button"
+          id="cancel-dialog"
+          class="px-8 py-3 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors duration-200"
+        >
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+</dialog>
+
+<script>
+  const dialog = document.getElementById('contact-dialog') as HTMLDialogElement;
+  const openBtn = document.getElementById('open-contact-dialog');
+  const closeBtn = document.getElementById('close-contact-dialog');
+  const cancelBtn = document.getElementById('cancel-dialog');
+
+  openBtn?.addEventListener('click', () => {
+    dialog?.showModal();
+  });
+
+  closeBtn?.addEventListener('click', () => {
+    dialog?.close();
+  });
+
+  cancelBtn?.addEventListener('click', () => {
+    dialog?.close();
+  });
+
+  // Close on backdrop click
+  dialog?.addEventListener('click', (e) => {
+    if (e.target === dialog) {
+      dialog.close();
+    }
+  });
+
+  // Close on Escape key
+  dialog?.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      dialog.close();
+    }
+  });
+</script>

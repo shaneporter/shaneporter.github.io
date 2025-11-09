@@ -41,32 +41,15 @@
     animation-delay: 0.3s;
   }
 
-  /* Section heading accent */
-  .section-heading {
-    position: relative;
-    display: inline-block;
-    padding-bottom: 0.5rem;
-  }
-
-  .section-heading::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    @apply bg-portfolio-red;
-  }
-
   /* Accessible focus styles for interactive elements */
   button:focus-visible,
   a:focus-visible {
-    @apply outline-2 outline-portfolio-red outline-offset-2;
+    @apply outline-2 outline-portfolio-orange outline-offset-2;
   }
 
   /* Ensure buttons have visible focus ring */
   button {
-    @apply focus-visible:outline focus-visible:outline-2 focus-visible:outline-portfolio-red focus-visible:outline-offset-2;
+    @apply focus-visible:outline focus-visible:outline-2 focus-visible:outline-portfolio-orange focus-visible:outline-offset-2;
   }
 
   /* Timeline pulse animation */
@@ -83,6 +66,17 @@
 
   .pulse-dot {
     animation: pulse-dot 2s ease-in-out infinite;
+  }
+
+  /* Respect user's motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 

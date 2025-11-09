@@ -1,9 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
-  <rect width="128" height="128" fill="#b01830"/>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="128" height="128"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <rect width="128" height="128" fill="#c2410c"></rect>
   <g fill="white" stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
     <!-- Left brace { -->
-    <path d="M 42 35 Q 35 35 35 42 L 35 54 Q 35 61 28 61 Q 35 61 35 68 L 35 80 Q 35 87 42 87" fill="none"/>
+    <path d="M 42 35 Q 35 35 35 42 L 35 54 Q 35 61 28 61 Q 35 61 35 68 L 35 80 Q 35 87 42 87" fill="none"></path>
     <!-- Right brace } -->
-    <path d="M 86 35 Q 93 35 93 42 L 93 54 Q 93 61 100 61 Q 93 61 93 68 L 93 80 Q 93 87 86 87" fill="none"/>
+    <path d="M 86 35 Q 93 35 93 42 L 93 54 Q 93 61 100 61 Q 93 61 93 68 L 93 80 Q 93 87 86 87" fill="none"></path>
   </g>
-</svg>
+</svg><style>@media (prefers-color-scheme: light) { :root { filter: none; } }
+@media (prefers-color-scheme: dark) { :root { filter: none; } }
+</style></svg>

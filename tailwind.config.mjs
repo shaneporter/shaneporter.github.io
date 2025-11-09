@@ -8,9 +8,17 @@ export default {
 				sans: ['-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif'],
 			},
 			colors: {
+				'portfolio-orange': {
+					DEFAULT: '#c2410c', // Burnt orange for main accent
+					light: '#ea580c', // Lighter orange for dark mode
+				},
+				'portfolio-teal': {
+					DEFAULT: '#0f766e',
+					light: '#14b8a6',
+				},
 				'portfolio-red': {
-					DEFAULT: '#b01830', // Darker for better contrast on white (WCAG AA compliant)
-					light: '#c41e3a', // Original color for dark mode
+					DEFAULT: '#b01830',
+					light: '#c41e3a',
 				},
 			},
 		},

@@ -10,8 +10,9 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.0.0",
     "@astrojs/tailwind": "^5.1.4",
+    "astro": "^5.0.0",
+    "astro-critters": "^2.2.1",
     "tailwindcss": "^3.4.0"
   },
   "devDependencies": {

@@ -23,11 +23,11 @@ const certifications = [
         rel="noopener noreferrer"
         class="flex items-center gap-6 group"
       >
-        <div class="w-12 h-12 flex-shrink-0 flex items-center justify-center">
+        <div class="w-12 h-12 flex-shrink-0 flex items-center justify-center bg-zinc-800 dark:bg-transparent rounded p-2 dark:p-0">
           <img 
             src={`/certifications/${cert.logo}.svg`}
             alt={`${cert.issuer} logo`}
-            class="w-12 h-12 object-contain cert-logo"
+            class="w-12 h-12 object-contain cert-logo filter brightness-0 invert"
             loading="lazy"
           />
         </div>

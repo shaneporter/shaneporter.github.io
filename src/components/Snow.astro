@@ -1,0 +1,61 @@
+<div id="snow-container" class="fixed top-0 left-0 w-full h-full pointer-events-none z-50" aria-hidden="true"></div>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const snowContainer = document.getElementById('snow-container');
+    if (!snowContainer) return;
+
+    const today = new Date();
+    const isDecember = today.getMonth() === 11; // Month is 0-indexed, 11 is December.
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (isDecember && !prefersReducedMotion) {
+      const snowflakeCount = 150;
+      const snowflakes = [];
+
+      for (let i = 0; i < snowflakeCount; i++) {
+        const snowflake = document.createElement('div');
+        const size = Math.random() * 2.5 + 1; // 1px to 3.5px
+        const animationDuration = Math.random() * 10 + 10; // 10 to 20 seconds
+        const animationDelay = Math.random() * 10;
+
+        snowflake.className = 'absolute rounded-full bg-white/70';
+        snowflake.style.width = `${size}px`;
+        snowflake.style.height = `${size}px`;
+        snowflake.style.left = `${Math.random() * 100}%`;
+        snowflake.style.animation = `fall ${animationDuration}s linear ${animationDelay}s infinite backwards`;
+        
+        // Add some horizontal drift variation
+        if (i % 3 === 0) {
+            snowflake.style.animationName = 'fall-reverse';
+        } else if (i % 2 !== 0) {
+            snowflake.style.opacity = `${Math.random() * 0.5 + 0.3}`; // Vary opacity for some flakes
+        }
+
+        snowflakes.push(snowflake);
+      }
+      snowContainer.append(...snowflakes);
+    }
+  });
+</script>
+
+<style is:global>
+  @keyframes fall {
+    from {
+      transform: translateY(-10vh) translateX(0);
+    }
+    to {
+      transform: translateY(110vh) translateX(10vw);
+    }
+  }
+
+  @keyframes fall-reverse {
+    from {
+      transform: translateY(-10vh) translateX(0);
+    }
+    to {
+      transform: translateY(110vh) translateX(-10vw);
+    }
+  }
+</style>
